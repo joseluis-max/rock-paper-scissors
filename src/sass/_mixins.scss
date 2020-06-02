@@ -1,0 +1,30 @@
+// Scissors-Gradient: #ec9e0e to #eca922;
+@mixin Scissors-Gradient {
+  background: rgb(236,158,14);
+  background: linear-gradient(0deg, rgba(236,158,14,1) 54%, rgba(236,169,34,1) 100%);
+}
+// Paper-Gradient: #4865f4 to #5671f5;
+@mixin Paper-Gradient {
+  background: rgb(72,101,244);
+  background: linear-gradient(0deg, rgba(72,101,244,1) 54%, rgba(86,113,245,1) 100%);
+}
+// Rock-Gradient: #dc2e4e to #dd405d;
+@mixin Rock-Gradient {
+  background: rgb(220,46,78);
+  background: linear-gradient(0deg, rgba(220,46,78,1) 54%, rgba(221,64,93,1) 100%);
+}
+// Lizard-Gradient: #834fe3 to #8c5de5;
+@mixin Lizard-Gradient {
+  background: rgb(131,79,227);
+  background: linear-gradient(0deg, rgba(131,79,227,1) 54%, rgba(140,93,229,1) 100%);
+}
+// Cyan: #40b9ce to #52bed1;
+@mixin Cyan {
+  background: rgb(64,185,206);
+  background: linear-gradient(0deg, rgba(64,185,206,1) 54%, rgba(82,190,209,1) 100%);
+}
+// Radial-Gradient: #1f3756 to #141539;
+@mixin Radial-Gradient {
+  background: rgb(31, 55, 86);
+  background: linear-gradient(0deg, rgba(31,55,86,1) 54%, rgba(20,21,57,1) 100%);
+}
