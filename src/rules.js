@@ -4,7 +4,7 @@ import React from 'react'
 export default class Rules extends React.Component {
   render() {
     return (
-      <div className="container-fluid d-flex justify-content-center align-items-center" id="WrapperRules">
+      <div className="d-flex justify-content-center align-items-center" id="WrapperRules">
         <div id="rules">
           <div className="d-flex justify-content-between mb-4">
             <span>RULES</span>

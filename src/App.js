@@ -3,12 +3,10 @@ import './App.css';
 
 
 import Header from './header'
-import Main from './main'
-import { Option } from './main'
+import Main, { Option } from './main'
 import Rules from './rules'
 import Result from './result'
 import HousePicked from './housePicked'
-import Circles from './circles'
 
 class App extends React.Component {
   constructor(props) {
@@ -107,33 +105,30 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="container-fluid pt-5" id="container">
+      <div className="" id="container">
         <Header score={this.state.score} />
         {
           this.state.playing ?
-            <div className="container-fluid d-flex justify-content-center align-items-center" id="wrapperResult">
+            <div className="d-flex justify-content-center align-items-center" id="wrapperResult">
               <div className="pick">
                 < p className="letters">YOU PICKED</p>
-                <Option name={this.state.pick} handle_option={this.handle_option} playing={this.state.playing} scala="option_2" />
+                <Option name={this.state.pick} handle_option={this.handle_option} playing={this.state.playing} win={this.state.youWin} scala="option_2" />
               </div>
               {this.state.endgame ? <Result state={this.state} tryAgain={this.tryAgain} /> : <div className="m-5 p-5 fill"></div>}
               <div className="house">
-                <p className="letters">THE HOUSE PICKED</p>
-                {this.state.housepicked ?
-                  <Option name={this.state.pick} handle_option={this.handle_option} scala="option_2" /> :
-                  this.state.house === 'rock' || this.state.house === 'paper' || this.state.house === 'scissors' ? <Option name={this.state.house} handle_option={this.handle_option} playing={this.state.playing} scala="option_2" /> :
+                <p className="letters">YOU HOUSE PICKED</p>
+                {
+                  this.state.house === 'rock' || this.state.house === 'paper' || this.state.house === 'scissors' ? <Option name={this.state.house} handle_option={this.handle_option} playing={this.state.playing} win={this.state.houseWin} /> :
                     <HousePicked housePicked={this.housePicked} house={this.state.house} />
                 }
               </div>
             </div> :
             <Main handle_option={this.handle_option} playing={this.state.playing} />
         }
-        <div className="container-fluid d-flex justify-content-end">
-          <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4 ">RULES</button>
+        <div className="container-fluid d-flex justify-content-end" id="buttonRules">
+          <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
         </div>
         {this.state.rules ? <Rules handlerules={this.handlerules} /> : null}
-        {this.state.youWin ? <Circles c="youwin" /> : null}
-        {this.state.houseWin ? <Circles c="housewin" /> : null}
       </div >
     );
   }

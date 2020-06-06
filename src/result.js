@@ -10,12 +10,12 @@ export default class Result extends React.Component {
   }
   render() {
     return (
-      <div className="m-5 p-5" id="result">
+      <div className="" id="result">
         <p className="letters_result">{
           this.props.state.youWin ? 'YOU WIN' :
-            this.props.state.houseWin ? 'HOUSE WIN' : 'DRAW'
+            this.props.state.houseWin ? 'YOU LOSE' : 'DRAW'
         }</p>
-        <button onClick={this.tryAgain} className="btn btn-light pl-5 pr-5 pt-2 pb-2">PLAY AGAIN</button>
+        <button onClick={this.tryAgain} className="btn btn-light">PLAY AGAIN</button>
       </div>
     )
   }
