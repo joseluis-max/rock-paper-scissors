@@ -65,18 +65,23 @@ class App extends React.Component {
           s++
           this.setState({ youWin: true, score: s })
         } else if (this.state.house === 'paper') {
-          this.setState({ houseWin: true })
+          s--
+          this.setState({ houseWin: true, score: s })
+
         }
       } else if (this.state.pick === 'paper') {
         if (this.state.house === 'scissors') {
-          this.setState({ houseWin: true })
+          s--
+          this.setState({ houseWin: true, score: s })
+
         } else if (this.state.house === 'rock') {
           s++
           this.setState({ youWin: true, score: s })
         }
       } else if (this.state.pick === 'scissors') {
         if (this.state.house === 'rock') {
-          this.setState({ houseWin: true })
+          s--
+          this.setState({ houseWin: true, score: s })
         } else if (this.state.house === 'paper') {
           s++
           this.setState({ youWin: true, score: s })
