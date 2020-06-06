@@ -16,6 +16,10 @@
     height: 120px !important;
     padding: 15px !important;
   }
+  .empty{
+    width: 120px !important;
+    height: 120px !important;
+  }
   
   .left{
     margin-right: 30px !important;
@@ -44,7 +48,7 @@
   .pick{
     width: 100px !important;
     margin-right: 8px;
-    margin-top: 30px;
+    margin-top: 22px;
     position: absolute;
     top: 0;
     left: 10%;
@@ -53,11 +57,11 @@
     width: 100px !important;
     position: absolute;
     top: 0;
-    right: 10%;
+    right: 15%;
   }
   #result{
     position: absolute;
-    bottom: 15%;
+    bottom: 10%;
   }
 }
 
@@ -67,13 +71,16 @@
 
 
 @media screen and (max-width:769px){
+  #container{
+    padding-top: 10px !important;
+  }
   #wrapper_button_option{
-  width: 170px  !important;
-  height: 170px  !important;
+  width: 170px  ;
+  height: 170px  ;
   }
   .wrapper_button_option_shadow{
-    width: 170px  !important;
-    height: 170px  !important;
+    width: 170px  ;
+    height: 170px  ;
   }
   #buttonRules{
     & button {
@@ -87,6 +94,11 @@
   & button {
     width: 200px !important;
     padding: 8px 30px !important;
+    }
   }
-}
+  #rules{
+    height: 100%;
+    line-height: 5;
+    border-radius: 0px !important;
+  }
 }
