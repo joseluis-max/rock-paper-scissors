@@ -1,4 +1,97 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+@media screen and (max-width: 426px) {
+  #header {
+    margin: 0px 10px !important;
+  }
+  #header #wrapper-score {
+    padding: 5px 10px !important;
+  }
+
+  #wrapper_button_option {
+    width: 120px !important;
+    height: 120px !important;
+    padding: 15px !important;
+  }
+
+  .wrapper_button_option_shadow {
+    width: 120px !important;
+    height: 120px !important;
+    padding: 15px !important;
+  }
+
+  .left {
+    margin-right: 30px !important;
+  }
+
+  .right {
+    margin-left: 30px !important;
+  }
+
+  .down {
+    margin-top: -20px !important;
+  }
+
+  #buttonRules button {
+    margin-top: -20px !important;
+  }
+
+  .letters {
+    font-size: 1rem !important;
+  }
+
+  .letters_result {
+    font-size: 1.3rem !important;
+  }
+
+  #wrapperResult {
+    position: relative;
+  }
+
+  .pick {
+    width: 100px !important;
+    margin-right: 8px;
+    margin-top: 30px;
+    position: absolute;
+    top: 0;
+    left: 10%;
+  }
+
+  .house {
+    width: 100px !important;
+    position: absolute;
+    top: 0;
+    right: 10%;
+  }
+
+  #result {
+    position: absolute;
+    bottom: 15%;
+  }
+}
+@media screen and (max-width: 769px) {
+  #wrapper_button_option {
+    width: 170px !important;
+    height: 170px !important;
+  }
+
+  .wrapper_button_option_shadow {
+    width: 170px !important;
+    height: 170px !important;
+  }
+
+  #buttonRules button {
+    margin-top: -20px !important;
+  }
+
+  .letters_result {
+    font-size: 2.2rem !important;
+  }
+
+  #result button {
+    width: 200px !important;
+    padding: 8px 30px !important;
+  }
+}
 #container {
   font-family: Barlow Semi Condensed, sans-serif;
   font-size: 15px;
@@ -12,7 +105,7 @@
 #container #header {
   border: 3px solid rgba(255, 255, 255, 0.493);
   border-radius: 10px;
-  width: 700px;
+  max-width: 700px;
   padding: 20px 20px;
   margin: 0px auto;
 }
@@ -50,7 +143,7 @@
 }
 
 #main {
-  width: 700px;
+  max-width: 700px;
   margin: 0px auto;
   height: 60vh;
   padding-top: 50px;
@@ -199,13 +292,11 @@
   width: 315px;
   z-index: 5;
   margin-right: 8px;
-  margin-bottom: 67px !important;
 }
 
 .house {
   z-index: 5;
   width: 315px;
-  margin-bottom: 67px !important;
 }
 
 #result {

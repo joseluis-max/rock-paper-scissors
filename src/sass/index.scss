@@ -13,7 +13,7 @@
   #header{
     border: 3px solid rgba(255, 255, 255, 0.493);
     border-radius: 10px;
-    width: 700px;
+    max-width: 700px;
     padding: 20px 20px;
     margin: 0px auto;
     & #wrapper-score{
@@ -53,7 +53,7 @@
   }
 }
 #main{
-  width: 700px;
+  max-width: 700px;
   margin: 0px auto;
   height: 60vh;
   padding-top: 50px;
@@ -142,7 +142,6 @@
 .down{
   grid-area: down;
   margin-top: -30px;
- 
 }
 
 .scissors{
@@ -179,13 +178,12 @@
   width: 315px;
   z-index: 5;
   margin-right: 8px;
-  margin-bottom:67px !important;
   
 }
 .house{
   z-index: 5;
   width: 315px;
-  margin-bottom: 67px !important;
+
 }
 #result{
   z-index: 6;

@@ -1,0 +1,92 @@
+@media screen and (max-width: 426px) {
+   #header{
+     margin: 0px 10px !important;
+     & #wrapper-score{
+      padding: 5px 10px !important;
+    }
+   }
+
+  #wrapper_button_option{
+    width: 120px !important;
+    height: 120px !important;
+    padding: 15px !important;
+  }
+  .wrapper_button_option_shadow{
+    width: 120px !important;
+    height: 120px !important;
+    padding: 15px !important;
+  }
+  
+  .left{
+    margin-right: 30px !important;
+  }
+  .right{
+    margin-left: 30px !important;
+  }
+  .down{
+    margin-top: -20px !important;
+  }
+  #buttonRules{
+    
+    & button {
+     margin-top: -20px !important;
+    }
+  }
+  .letters {
+    font-size: 1rem !important;
+  }
+  .letters_result{
+    font-size: 1.3rem !important;
+  }
+   #wrapperResult{
+     position: relative;
+   }
+  .pick{
+    width: 100px !important;
+    margin-right: 8px;
+    margin-top: 30px;
+    position: absolute;
+    top: 0;
+    left: 10%;
+  }
+  .house{
+    width: 100px !important;
+    position: absolute;
+    top: 0;
+    right: 10%;
+  }
+  #result{
+    position: absolute;
+    bottom: 15%;
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width:769px){
+  #wrapper_button_option{
+  width: 170px  !important;
+  height: 170px  !important;
+  }
+  .wrapper_button_option_shadow{
+    width: 170px  !important;
+    height: 170px  !important;
+  }
+  #buttonRules{
+    & button {
+      margin-top: -20px !important;
+    }
+  }
+  .letters_result{
+    font-size: 2.2rem !important;
+  }
+  #result{
+  & button {
+    width: 200px !important;
+    padding: 8px 30px !important;
+  }
+}
+}
