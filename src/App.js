@@ -39,16 +39,14 @@ class App extends React.Component {
     }
   }
   housePicked() {
-    for (let i = 0; i < 10; i++) {
-      let num;
-      num = Math.floor(Math.random() * (3 - 1 + 1) + 1)
-      if (num === 1) {
-        this.setState({ house: 'paper' })
-      } else if (num === 2) {
-        this.setState({ house: 'rock' })
-      } else {
-        this.setState({ house: 'scissors' })
-      }
+    let num;
+    num = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+    if (num === 1) {
+      this.setState({ house: 'paper' })
+    } else if (num === 2) {
+      this.setState({ house: 'rock' })
+    } else if (num === 3) {
+      this.setState({ house: 'scissors' })
     }
     this.verification()
   }
@@ -96,11 +94,9 @@ class App extends React.Component {
   }
   handle_option(e) {
     if (e.target.localName === "img") {
-      console.dir(e.target.parentNode)
       let name = e.target.parentNode.name;
       this.setState({ [name]: !this.state[name], pick: name, playing: true })
     } else {
-      console.dir(e.target)
       let name = e.target.name
       this.setState({ [name]: !this.state[name], pick: name, playing: true })
     }

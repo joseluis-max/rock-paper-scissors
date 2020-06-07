@@ -5,7 +5,7 @@ export class Option extends React.Component {
   handleclick(e) {
     e.preventDefault()
     if (this.props.playing) {
-      console.log('estas jugando...')
+
     } else {
       this.props.handle_option(e)
     }
@@ -15,7 +15,6 @@ export class Option extends React.Component {
     if (this.props.win) {
       shadow = 'wrapper_button_option_shadow'
     }
-    console.log(this.props)
     return (
       <div className={this.props.name + " " + this.props.position + " " + shadow} id="wrapper_button_option">
         <button onClick={this.handleclick.bind(this)} className="button_option" name={this.props.name}>
