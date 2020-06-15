@@ -39,7 +39,7 @@
   }
   #wrapperResult{
     width: 100%;
-    height: 60vh;
+    height: 63vh;
     & > div {
       text-align: center;
     }
@@ -55,7 +55,7 @@
 #main{
   max-width: 700px;
   margin: 0px auto;
-  height: 60vh;
+  height: 63vh;
   padding-top: 50px;
   background-image: url('./bg-triangle.svg');
   background-repeat: no-repeat;
@@ -66,6 +66,20 @@
   grid-template-areas: "left right" "down down";
   justify-items: center;
 }
+#main_bonus{
+  max-width: 700px;
+  margin: 0px auto;
+  height: 63vh;
+  padding-top: 20px;
+  background-image: url('./bg-pentagon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  grid-template-rows: 1fr  130px  1fr;
+  grid-template-areas: ". scissor . "  "spock . paper" "lizard . rock";
+  justify-items: center;
+}
 #wrapper_button_option{
   display: flex;
   justify-content: center;
@@ -74,6 +88,16 @@
   width: 200px;
   height: 200px;
   padding: 20px;
+  margin: 0px auto;
+}
+#wrapper_button_option_bonus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  padding: 13px;
   margin: 0px auto;
 }
 .wrapper_button_option_shadow{
@@ -144,6 +168,33 @@
   margin-top: -30px;
 }
 
+
+
+.scissors_bonus{
+  grid-area: scissor;
+  margin: -15px 0px 0px 0px;
+}
+.rock_bonus{
+  grid-area:rock;
+  justify-self: start;
+}
+.paper_bonus{
+  grid-area: paper;
+  justify-self: center;
+  margin: -30px 0px 0px -50px;
+}
+.spock_bonus{
+  grid-area:spock;
+  justify-self: center;
+   margin: -30px -50px 0px 0px;
+}
+.lizard_bonus{
+  grid-area: lizard;
+   justify-self: flex-end;
+}
+
+
+
 .scissors{
   @include Scissors-Gradient;
   box-shadow: 0px 8px 0px 0px rgb(175, 127, 31);
@@ -155,6 +206,14 @@
 .paper{
   @include Paper-Gradient;
   box-shadow: 0px 8px 0px 0px  rgb(50, 73, 184);
+}
+.lizard{
+  @include Lizard-Gradient;
+    box-shadow: 0px 8px 0px 0px rgb(111, 65, 196);
+}
+.spock{
+  @include Cyan;
+    box-shadow: 0px 8px 0px 0px rgb(55, 162, 180);
 }
 
 .letters_result{
@@ -178,11 +237,12 @@
   width: 315px;
   z-index: 5;
   margin-right: 8px;
-  
+  height: 315px;
 }
 .house{
   z-index: 5;
   width: 315px;
+  height: 315px;
 
 }
 #result{
@@ -192,6 +252,9 @@
   }
 }
 #buttonRules{
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
   z-index: 3;
   & button {
     z-index: 4;

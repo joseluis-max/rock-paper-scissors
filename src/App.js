@@ -3,7 +3,7 @@ import './App.css';
 
 
 import Header from './header'
-import Main, { Option } from './main'
+import Main, { Option, MainBonus } from './main'
 import Rules from './rules'
 import Result from './result'
 import HousePicked from './housePicked'
@@ -12,6 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      bonus: false,
       rules: false,
       rock: false,
       paper: false,
@@ -31,6 +32,7 @@ class App extends React.Component {
     this.handle_option = this.handle_option.bind(this)
     this.tryAgain = this.tryAgain.bind(this)
     this.housePicked = this.housePicked.bind(this)
+    this.original_bonus = this.original_bonus.bind(this)
   }
   componentDidMount() {
     let score = localStorage.getItem('score')
@@ -40,13 +42,21 @@ class App extends React.Component {
   }
   housePicked() {
     let num;
-    num = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+    if (this.state.bonus) {
+      num = Math.floor(Math.random() * (5 - 1 + 1) + 1)
+    } else {
+      num = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+    }
     if (num === 1) {
       this.setState({ house: 'paper' })
     } else if (num === 2) {
       this.setState({ house: 'rock' })
     } else if (num === 3) {
       this.setState({ house: 'scissors' })
+    } else if (num === 4) {
+      this.setState({ house: 'lizard' })
+    } else if (num === 5) {
+      this.setState({ house: 'spock' })
     }
     this.verification()
   }
@@ -65,8 +75,15 @@ class App extends React.Component {
         } else if (this.state.house === 'paper') {
           s--
           this.setState({ houseWin: true, score: s })
-
         }
+        else if (this.state.house === 'lizard') {
+          s++
+          this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'spock') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        }
+
       } else if (this.state.pick === 'paper') {
         if (this.state.house === 'scissors') {
           s--
@@ -84,6 +101,8 @@ class App extends React.Component {
           s++
           this.setState({ youWin: true, score: s })
         }
+      } else if (this.state.pick === 'lizard') {
+
       }
     }
     this.setState({ endgame: true })
@@ -104,29 +123,34 @@ class App extends React.Component {
   tryAgain() {
     this.setState({ playing: false, house: "", pick: false, housepicked: false, endgame: false, youWin: false, houseWin: false, draw: false })
   }
+  original_bonus() {
+    this.setState({ bonus: !this.state.bonus })
+  }
   render() {
     return (
       <div className="" id="container">
-        <Header score={this.state.score} />
+        <Header score={this.state.score} original_bonus={this.original_bonus} />
         {
           this.state.playing ?
             <div className="d-flex justify-content-center align-items-center" id="wrapperResult">
               <div className="pick">
                 < p className="letters">YOU PICKED</p>
-                <Option name={this.state.pick} handle_option={this.handle_option} playing={this.state.playing} win={this.state.youWin} scala="option_2" />
+                <Option name={this.state.pick} handle_option={this.handle_option} playing={this.state.playing} win={this.state.youWin} id={"wrapper_button_option"} />
               </div>
               {this.state.endgame ? <Result state={this.state} tryAgain={this.tryAgain} /> : <div className="m-5 p-5 fill"></div>}
               <div className="house">
                 <p className="letters">YOU HOUSE PICKED</p>
                 {
-                  this.state.house === 'rock' || this.state.house === 'paper' || this.state.house === 'scissors' ? <Option name={this.state.house} handle_option={this.handle_option} playing={this.state.playing} win={this.state.houseWin} /> :
+                  this.state.house === 'rock' || this.state.house === 'paper' || this.state.house === 'scissors' || this.state.house === 'lizard' || this.state.house === 'spock' ? <Option name={this.state.house} handle_option={this.handle_option} playing={this.state.playing} win={this.state.houseWin} id={"wrapper_button_option"} /> :
                     <HousePicked housePicked={this.housePicked} house={this.state.house} />
                 }
               </div>
             </div> :
-            <Main handle_option={this.handle_option} playing={this.state.playing} />
+            this.state.bonus ? <MainBonus handle_option={this.handle_option} playing={this.state.playing} /> :
+              <Main handle_option={this.handle_option} playing={this.state.playing} />
+
         }
-        <div className="container-fluid d-flex justify-content-end" id="buttonRules">
+        <div id="buttonRules">
           <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
         </div>
         {this.state.rules ? <Rules handlerules={this.handlerules} /> : null}

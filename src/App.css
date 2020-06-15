@@ -145,7 +145,7 @@
 }
 #container #wrapperResult {
   width: 100%;
-  height: 60vh;
+  height: 63vh;
 }
 #container #wrapperResult > div {
   text-align: center;
@@ -160,7 +160,7 @@
 #main {
   max-width: 700px;
   margin: 0px auto;
-  height: 60vh;
+  height: 63vh;
   padding-top: 50px;
   background-image: url("./bg-triangle.svg");
   background-repeat: no-repeat;
@@ -172,6 +172,21 @@
   justify-items: center;
 }
 
+#main_bonus {
+  max-width: 700px;
+  margin: 0px auto;
+  height: 63vh;
+  padding-top: 20px;
+  background-image: url("./bg-pentagon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  grid-template-rows: 1fr 130px 1fr;
+  grid-template-areas: ". scissor . " "spock . paper" "lizard . rock";
+  justify-items: center;
+}
+
 #wrapper_button_option {
   display: flex;
   justify-content: center;
@@ -180,6 +195,17 @@
   width: 200px;
   height: 200px;
   padding: 20px;
+  margin: 0px auto;
+}
+
+#wrapper_button_option_bonus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  padding: 13px;
   margin: 0px auto;
 }
 
@@ -265,6 +291,43 @@
   margin-top: -30px;
 }
 
+.scissors_bonus {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: scissor;
+  margin: -15px 0px 0px 0px;
+}
+
+.rock_bonus {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: rock;
+  justify-self: start;
+}
+
+.paper_bonus {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: paper;
+  justify-self: center;
+  margin: -30px 0px 0px -50px;
+}
+
+.spock_bonus {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: spock;
+  justify-self: center;
+  margin: -30px -50px 0px 0px;
+}
+
+.lizard_bonus {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: lizard;
+  justify-self: flex-end;
+}
+
 .scissors {
   background: #ec9e0e;
   background: linear-gradient(0deg, #ec9e0e 54%, #eca922 100%);
@@ -281,6 +344,18 @@
   background: #4865f4;
   background: linear-gradient(0deg, #4865f4 54%, #5671f5 100%);
   box-shadow: 0px 8px 0px 0px #3249b8;
+}
+
+.lizard {
+  background: #834fe3;
+  background: linear-gradient(0deg, #834fe3 54%, #8c5de5 100%);
+  box-shadow: 0px 8px 0px 0px #6f41c4;
+}
+
+.spock {
+  background: #40b9ce;
+  background: linear-gradient(0deg, #40b9ce 54%, #52bed1 100%);
+  box-shadow: 0px 8px 0px 0px #37a2b4;
 }
 
 .letters_result {
@@ -307,11 +382,13 @@
   width: 315px;
   z-index: 5;
   margin-right: 8px;
+  height: 315px;
 }
 
 .house {
   z-index: 5;
   width: 315px;
+  height: 315px;
 }
 
 #result {
@@ -322,6 +399,9 @@
 }
 
 #buttonRules {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
   z-index: 3;
 }
 #buttonRules button {
