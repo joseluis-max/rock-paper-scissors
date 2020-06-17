@@ -92,6 +92,12 @@ class App extends React.Component {
         } else if (this.state.house === 'rock') {
           s++
           this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'lizard') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        } else if (this.state.house === 'spock') {
+          s++
+          this.setState({ youWin: true, score: s })
         }
       } else if (this.state.pick === 'scissors') {
         if (this.state.house === 'rock') {
@@ -100,9 +106,41 @@ class App extends React.Component {
         } else if (this.state.house === 'paper') {
           s++
           this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'lizard') {
+          s++
+          this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'spock') {
+          s--
+          this.setState({ houseWin: true, score: s })
         }
       } else if (this.state.pick === 'lizard') {
-
+        if (this.state.house === 'rock') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        } else if (this.state.house === 'paper') {
+          s++
+          this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'scissors') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        } else if (this.state.house === 'spock') {
+          s++
+          this.setState({ youWin: true, score: s })
+        }
+      } else if (this.state.pick === 'spock') {
+        if (this.state.house === 'paper') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        } else if (this.state.house === 'rock') {
+          s++
+          this.setState({ youWin: true, score: s })
+        } else if (this.state.house === 'lizard') {
+          s--
+          this.setState({ houseWin: true, score: s })
+        } else if (this.state.house === 'scissors') {
+          s++
+          this.setState({ youWin: true, score: s })
+        }
       }
     }
     this.setState({ endgame: true })
@@ -129,7 +167,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="" id="container">
-        <Header score={this.state.score} original_bonus={this.original_bonus} />
+        <Header score={this.state.score} original_bonus={this.original_bonus} mode={this.state.bonus} />
         {
           this.state.playing ?
             <div className="d-flex justify-content-center align-items-center" id="wrapperResult">
@@ -153,7 +191,7 @@ class App extends React.Component {
         <div id="buttonRules">
           <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
         </div>
-        {this.state.rules ? <Rules handlerules={this.handlerules} /> : null}
+        {this.state.rules ? <Rules handlerules={this.handlerules} mode={this.state.bonus} /> : null}
       </div >
     );
   }

@@ -14,7 +14,7 @@ export default class Rules extends React.Component {
               </svg>
             </button>
           </div>
-          <img src='./asset/image-rules.svg' alt="rules" />
+          <img src={this.props.mode ? './asset/image-rules-bonus.svg' : './asset/image-rules.svg'} alt="rules" />
         </div>
       </div>
     )
