@@ -400,12 +400,19 @@
 
 #buttonRules {
   position: fixed;
-  bottom: 1%;
-  right: 1%;
+  bottom: 2%;
+  right: 2%;
   z-index: 3;
 }
 #buttonRules button {
   z-index: 4;
+}
+
+#bonus {
+  width: 150px;
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
 }
 
 @keyframes shadow {

@@ -167,7 +167,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="" id="container">
-        <Header score={this.state.score} original_bonus={this.original_bonus} mode={this.state.bonus} />
+        <Header score={this.state.score} />
         {
           this.state.playing ?
             <div className="d-flex justify-content-center align-items-center" id="wrapperResult">
@@ -188,6 +188,7 @@ class App extends React.Component {
               <Main handle_option={this.handle_option} playing={this.state.playing} />
 
         }
+        <button onClick={this.original_bonus} className="btn btn-outline-info ml-2" id="bonus">{this.state.bonus ? "Original" : "Bonus"}</button>
         <div id="buttonRules">
           <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
         </div>
