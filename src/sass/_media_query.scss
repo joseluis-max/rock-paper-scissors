@@ -20,7 +20,19 @@
     width: 120px !important;
     height: 120px !important;
   }
-  
+  #main_bonus{
+    
+  }
+  #wrapper_button_option_bonus{
+  width: 100px !important;
+  height: 100px !important;
+  }
+  .paper_bonus{
+  justify-self: end !important;
+  }
+  .spock_bonus{
+    justify-self: start !important;
+  }
   .left{
     margin-right: 30px !important;
   }
@@ -31,7 +43,6 @@
     margin-top: -20px !important;
   }
   #buttonRules{
-    
     & button {
      margin-top: -20px !important;
     }

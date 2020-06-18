@@ -24,6 +24,19 @@
     height: 120px !important;
   }
 
+  #wrapper_button_option_bonus {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .paper_bonus {
+    justify-self: end !important;
+  }
+
+  .spock_bonus {
+    justify-self: start !important;
+  }
+
   .left {
     margin-right: 30px !important;
   }
@@ -174,9 +187,9 @@
 
 #main_bonus {
   max-width: 700px;
-  margin: 0px auto;
+  margin: 0px auto 0px auto;
   height: 63vh;
-  padding-top: 20px;
+  padding: 20px 0px 0px 0px;
   background-image: url("./bg-pentagon.svg");
   background-repeat: no-repeat;
   background-position: center;
