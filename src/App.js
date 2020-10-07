@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import './App.css';
-
 
 import Header from './header'
 import Main, { Option, MainBonus } from './main'
@@ -8,194 +7,215 @@ import Rules from './rules'
 import Result from './result'
 import HousePicked from './housePicked'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bonus: false,
-      rules: false,
-      rock: false,
-      paper: false,
-      scissors: false,
-      playing: false,
-      pick: false,
-      housepicked: false,
-      house: '',
-      score: 0,
-      youWin: false,
-      houseWin: false,
-      draw: false,
-      result: false,
-      endgame: false
+function App (){
+  const [score, setScore] = useState(0);
+  const [paper, setPaper] = useState(false);
+  const [rock, setRock] = useState(false);
+  const [scissors, setScissors] = useState(false);
+  const [spock, setSpock] = useState(false);
+  const [lizard, setLizard] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const [pick, setPick] = useState(false);
+  const [youWin, setYouWin] = useState(false);
+  const [houseWin, setHouseWin] = useState(false);
+  const [result, setResult] = useState(false);
+  const [endgame, setEndGame] = useState(false);
+  const [house, setHouse] = useState('');
+  const [housePicket, setHousePicket] = useState(false);
+  const [draw, setDraw] = useState(false);
+  const [bonus, setBonus] = useState(false);
+  const [rules, setRules] = useState(false);
+  useEffect(()=>{
+    let score = localStorage.getItem('score');
+    if (score !== null || undefined) {
+      setScore(score)
     }
-    this.handlerules = this.handlerules.bind(this)
-    this.handle_option = this.handle_option.bind(this)
-    this.tryAgain = this.tryAgain.bind(this)
-    this.housePicked = this.housePicked.bind(this)
-    this.original_bonus = this.original_bonus.bind(this)
-  }
-  componentDidMount() {
-    let score = localStorage.getItem('score')
-    if (score !== null) {
-      this.setState({ score: score })
-    }
-  }
-  housePicked() {
+  },[])
+  // LEER SOBRE REACT USEEFFECT
+  function housePicked() {
     let num;
-    if (this.state.bonus) {
+    if (bonus) {
       num = Math.floor(Math.random() * (5 - 1 + 1) + 1)
     } else {
       num = Math.floor(Math.random() * (3 - 1 + 1) + 1)
     }
+    // Remplazar un switch para mejor lectura.
     if (num === 1) {
-      this.setState({ house: 'paper' })
+     setPaper({ paper: 'paper' })
     } else if (num === 2) {
-      this.setState({ house: 'rock' })
+      setRock({ rock: 'rock' })
     } else if (num === 3) {
-      this.setState({ house: 'scissors' })
+       setScissors({ scissors: 'scissors' })
     } else if (num === 4) {
-      this.setState({ house: 'lizard' })
+       setLizard({ lizard: 'lizard' })
     } else if (num === 5) {
-      this.setState({ house: 'spock' })
+       setSpock({ spock: 'spock' })
     }
-    this.verification()
+    verification()
   }
-  savedData() {
-    localStorage.setItem("score", this.state.score)
+  function savedData() {
+    localStorage.setItem("score", score)
   }
-  verification() {
-    let s = this.state.score
-    if (this.state.pick === this.state.house) {
-      this.setState({ draw: true })
-    } else if (this.state.pick !== this.state.house) {
-      if (this.state.pick === 'rock') {
-        if (this.state.house === 'scissors') {
+  function verification() {
+    let s = score
+    if (pick === house) {
+      setDraw(true)
+    } else if (pick !== house) {
+      if (pick === 'rock') {
+        if (house === 'scissors') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'paper') {
+          setYouWin(true)
+          setScore(s)
+        } else if (house === 'paper') {
           s--
-          this.setState({ houseWin: true, score: s })
+          setHouseWin(true)
+          setScore(s)
         }
-        else if (this.state.house === 'lizard') {
+        else if (house === 'lizard') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'spock') {
+          setYouWin(true)
+          setScore(s)
+        } else if (house === 'spock') {
           s--
-          this.setState({ houseWin: true, score: s })
+          setHouseWin(true)
+          setScore(s)
         }
 
-      } else if (this.state.pick === 'paper') {
-        if (this.state.house === 'scissors') {
+      } else if (pick === 'paper') {
+        if (house === 'scissors') {
           s--
-          this.setState({ houseWin: true, score: s })
-
-        } else if (this.state.house === 'rock') {
+          setHouseWin(true)
+          setScore(s)
+        } else if (house === 'rock') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'lizard') {
+         setYouWin(true)
+          setScore(s)
+        } else if (house === 'lizard') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'spock') {
+          setHouseWin(true)
+          setScore(s)
+        } else if (house === 'spock') {
           s++
-          this.setState({ youWin: true, score: s })
+         setYouWin(true)
+          setScore(s)
         }
-      } else if (this.state.pick === 'scissors') {
-        if (this.state.house === 'rock') {
+      } else if (pick === 'scissors') {
+        if (house === 'rock') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'paper') {
+          setHouseWin(true)
+          setScore(s)
+        } else if (house === 'paper') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'lizard') {
+         setYouWin(true)
+          setScore(s)
+        } else if (house === 'lizard') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'spock') {
+          setYouWin(true)
+          setScore(s)
+        } else if (house === 'spock') {
           s--
-          this.setState({ houseWin: true, score: s })
+         setHouseWin(true)
+          setScore(s)
         }
-      } else if (this.state.pick === 'lizard') {
-        if (this.state.house === 'rock') {
+      } else if (pick === 'lizard') {
+        if (house === 'rock') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'paper') {
+         setHouseWin(true)
+          setScore(s)
+        } else if (house === 'paper') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'scissors') {
+          setYouWin(true)
+          setScore(s)
+        } else if (house === 'scissors') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'spock') {
+         setHouseWin(true)
+          setScore(s)
+        } else if (house === 'spock') {
           s++
-          this.setState({ youWin: true, score: s })
+         setYouWin(true)
+          setScore(s)
         }
-      } else if (this.state.pick === 'spock') {
-        if (this.state.house === 'paper') {
+      } else if (pick === 'spock') {
+        if (house === 'paper') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'rock') {
+          setHouseWin(true)
+          setScore(s)
+        } else if (house === 'rock') {
           s++
-          this.setState({ youWin: true, score: s })
-        } else if (this.state.house === 'lizard') {
+         setYouWin(true)
+          setScore(s)
+        } else if (house === 'lizard') {
           s--
-          this.setState({ houseWin: true, score: s })
-        } else if (this.state.house === 'scissors') {
+          setHouseWin(true)
+          setScore(s)
+        } else if (house === 'scissors') {
           s++
-          this.setState({ youWin: true, score: s })
+         setYouWin(true)
+          setScore(s)
         }
       }
     }
-    this.setState({ endgame: true })
-    this.savedData()
+    setEndGame(true)
+    savedData()
   }
-  handlerules() {
-    this.setState({ rules: !this.state.rules })
+  function handlerules() {
+    setRules(!rules)
   }
-  handle_option(e) {
+  function handle_option(e) {
     if (e.target.localName === "img") {
       let name = e.target.parentNode.name;
-      this.setState({ [name]: !this.state[name], pick: name, playing: true })
+      setPick(name)
+      setPlaying(true)
     } else {
       let name = e.target.name
-      this.setState({ [name]: !this.state[name], pick: name, playing: true })
+       setPick(name)
+       setPlaying(true)
+      //setState({ [name]: !data[name], pick: name, playing: true })
     }
   }
-  tryAgain() {
-    this.setState({ playing: false, house: "", pick: false, housepicked: false, endgame: false, youWin: false, houseWin: false, draw: false })
+  function tryAgain() {
+   // setScore({ playing: false, house: "", pick: false, housepicked: false, endgame: false, youWin: false, houseWin: false, draw: false })
+   setPlaying(false);
+   setHouse('');
+   setPick(false);
+   setHousePicket(false);
+   setEndGame(false);
+   setYouWin(false);
+   setHouseWin(false);
+   setDraw(false);
   }
-  original_bonus() {
-    this.setState({ bonus: !this.state.bonus })
+  function original_bonus() {
+    setBonus(!bonus)
   }
-  render() {
-    return (
-      <div className="" id="container">
-        <Header score={this.state.score} />
+  return(
+     <div className="" id="container">
+        <Header score={score} />
         {
-          this.state.playing ?
+          playing ?
             <div className="d-flex justify-content-center align-items-center" id="wrapperResult">
               <div className="pick">
                 < p className="letters">YOU PICKED</p>
-                <Option name={this.state.pick} handle_option={this.handle_option} playing={this.state.playing} win={this.state.youWin} id={"wrapper_button_option"} />
+                <Option name={pick} handle_option={handle_option} playing={playing} win={youWin} id={"wrapper_button_option"} />
               </div>
-              {this.state.endgame ? <Result state={this.state} tryAgain={this.tryAgain} /> : <div className="m-5 p-5 fill"></div>}
+              {endgame ? <Result  tryAgain={tryAgain} /> : <div className="m-5 p-5 fill"></div>}
               <div className="house">
                 <p className="letters">YOU HOUSE PICKED</p>
                 {
-                  this.state.house === 'rock' || this.state.house === 'paper' || this.state.house === 'scissors' || this.state.house === 'lizard' || this.state.house === 'spock' ? <Option name={this.state.house} handle_option={this.handle_option} playing={this.state.playing} win={this.state.houseWin} id={"wrapper_button_option"} /> :
-                    <HousePicked housePicked={this.housePicked} house={this.state.house} />
+                  house === 'rock' || house === 'paper' || house === 'scissors' || house === 'lizard' || house === 'spock' ? <Option name={house} handle_option={handle_option} playing={playing} win={houseWin} id={"wrapper_button_option"} /> :
+                    <HousePicked housePicked={housePicked} house={house} />
                 }
               </div>
             </div> :
-            this.state.bonus ? <MainBonus handle_option={this.handle_option} playing={this.state.playing} /> :
-              <Main handle_option={this.handle_option} playing={this.state.playing} />
+            bonus ? <MainBonus handle_option={handle_option} playing={playing} /> :
+              <Main handle_option={handle_option} playing={playing} />
 
         }
-        <button onClick={this.original_bonus} className="btn btn-outline-info ml-2" id="bonus">{this.state.bonus ? "Original" : "Bonus"}</button>
+        <button onClick={original_bonus} className="btn btn-outline-info ml-2" id="bonus">{bonus ? "Original" : "Bonus"}</button>
         <div id="buttonRules">
-          <button onClick={this.handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
+          <button onClick={handlerules} className="btn btn-outline-light pr-4 pl-4">RULES</button>
         </div>
-        {this.state.rules ? <Rules handlerules={this.handlerules} mode={this.state.bonus} /> : null}
+        {rules ? <Rules handlerules={handlerules} mode={bonus} /> : null}
       </div >
-    );
-  }
+  )
 }
-
 export default App;
