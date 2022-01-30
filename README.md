@@ -1,4 +1,16 @@
+# Rock Papper and Scissors
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Description
+This web page emulate the rock papper and scissors game.
+
+Has two mode:
+
+  `classic` -> rock, papper, and scissors
+  
+  `bonus` -> rock, papper, scissors, lizard and spock
+  
+Was make with React, sass.
 
 ## Available Scripts
 
