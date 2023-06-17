@@ -1,5 +1,3 @@
-Certainly! Here's an updated version of the README that includes the mention of playing the game with the "Lizard Spock" version:
-
 # Rock Paper Scissors Game
 
 This repository contains a Rock Paper Scissors game built using React. The game allows players to compete against the computer by choosing one of the available options: rock, paper, scissors, lizard, or Spock. The computer also randomly selects an option, and the winner is determined based on the classic Rock Paper Scissors (including lizard and Spock) rules.
