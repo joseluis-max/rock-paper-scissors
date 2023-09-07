@@ -40,7 +40,7 @@ To run the Rock Paper Scissors game locally, follow these steps:
    npm start
    ```
 
-5. Open your browser and visit `http://localhost:3000` to play the game.
+5. Open your browser and visit `http://localhost:3000` to play the game
 
 ## Usage
 
